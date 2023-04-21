@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,6 +10,8 @@ class GestionAgencias extends Controller
 {
     public function Agregar ( Request $request)
     {
+        //return $request->tipo_agencia;
+
         DB::table('agencias')->insert([
             [
              'nombre_agencia' => $request->nombre_agencia,
