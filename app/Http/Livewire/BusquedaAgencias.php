@@ -9,6 +9,7 @@ class BusquedaAgencias extends Component
 {
 
     public $buscar ="";
+    public $select1 ="";
 
     public function render()
     {
@@ -25,7 +26,9 @@ class BusquedaAgencias extends Component
                                          ->orwhere ('modalidad','like','%'.$this->buscar.'%')
                                          ->orwhere ('monto_pago','like','%'.$this->buscar.'%')
                                          ->orwhere ('vendedor','like','%'.$this->buscar.'%')
-                                         ->orwhere ('porcentaje','like','%'.$this->buscar.'%')->get();
+                                         ->orwhere ('porcentaje','like','%'.$this->buscar.'%')
+                                         ->orderBy('nombre_cliente')
+                                        ->get();
       //  return view('livewire.busqueda-agencias', compact('agencias') );
         return view('livewire.busqueda-agencias', ['agencias' => $agencias] );
     }
