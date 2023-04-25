@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 use Illuminate\Support\Facades\DB;
-
 use Livewire\Component;
 
 class BusquedaAgencias extends Component
@@ -10,6 +9,12 @@ class BusquedaAgencias extends Component
 
     public $buscar ="";
     public $select1 ="";
+
+    public $sort= 'id';
+    public $direccion = 'asc';
+
+
+
 
     public function render()
     {
@@ -27,9 +32,31 @@ class BusquedaAgencias extends Component
                                          ->orwhere ('monto_pago','like','%'.$this->buscar.'%')
                                          ->orwhere ('vendedor','like','%'.$this->buscar.'%')
                                          ->orwhere ('porcentaje','like','%'.$this->buscar.'%')
-                                         ->orderBy('nombre_cliente')
-                                        ->get();
+                                         ->orderBy($this->sort, $this->direccion)
+                                         ->get();
       //  return view('livewire.busqueda-agencias', compact('agencias') );
         return view('livewire.busqueda-agencias', ['agencias' => $agencias] );
+     }
+
+     public function order( $sort)
+    {
+        if($this->sort == $sort)
+        {
+            if($this->direccion == "asc")
+            {
+                $this->direccion = "desc";
+            }else
+            {
+                $this->direccion = "asc";
+            }
+        }
+        else
+        {
+            $this->sort =$sort;
+            $this->direccion = "asc";
+        }
+
     }
+
+
 }

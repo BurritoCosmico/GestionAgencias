@@ -27,25 +27,28 @@
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('id')">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('nombre_agencia')">
                             NOMBRE DE AGENCIA
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('nombre_cliente')">
                             REPRESENTANTE
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('tipo_agencia')">
                             TIPO DE AGENCIA
                         </th>
-                        <th scope="col" class="px-4 py-3">
+                        <th scope="col" class="px-4 py-3 cursor-pointer" wire:click="order('modalidad')">
                             MODALIDAD
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('mail')">
                             MAIL
                         </th>
-                        <th scope="col" class="px-4 py-3">
+                        <th scope="col" class="px-4 py-3 cursor-pointer" wire:click="order('monto_pago')">
                             MONTO PAGADO
                         </th>
-                        <th scope="col" class="px-5 py-3">
+                        <th scope="col" class="px-5 py-3 cursor-pointer">
                             FICHA
                         </th>
                     </tr>
@@ -55,6 +58,9 @@
 
                     @foreach ( $agencias as  $agencia)
                     <tr>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
+                            {{$agencia->id}}
+                        </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{$agencia->nombre_agencia}}
                         </th>
@@ -76,7 +82,12 @@
                             {{$agencia->monto_pago}}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <div class=" items-center ">
+                                <button class="py-2 px-6 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="toggleModal( '{{$agencia->id}}' )"> Ver ficha</button>
+                            </div>
+
+
+
                         </td>
                     </tr>
                     @endforeach
@@ -87,7 +98,16 @@
                 No hay coincidencias con los parametros ingresados
             </div>
         @endif
+
+        <div class="px-6 py-3">
+            {{-- {{$agencia->links}} --}}
+        </div>
+
     </div>
 
 
-</div>
+
+<script>
+    function toggleModal( ) { document.getElementById('modal').classList.toggle('hidden')
+    }
+</script>
