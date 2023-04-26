@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Livewire;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\WithPagination;
 use Livewire\Component;
+use App\Models\Agencia;
 
 class BusquedaAgencias extends Component
 {
@@ -22,7 +23,7 @@ class BusquedaAgencias extends Component
     public function render()
     {
 
-            $agencias = DB::table('agencias')->where('nombre_agencia','like','%'.$this->buscar.'%')
+            $agencias = Agencia::where('nombre_agencia','like','%'.$this->buscar.'%')
             ->orwhere ('nombre_cliente','like','%'.$this->buscar.'%')
             ->orwhere ('tipo_agencia','like','%'.$this->buscar.'%')
             ->orwhere ('ciudad','like','%'.$this->buscar.'%')
@@ -34,14 +35,15 @@ class BusquedaAgencias extends Component
             ->orwhere ('fecha_compra','like','%'.$this->buscar.'%')
             ->orwhere ('modalidad','like','%'.$this->buscar.'%')
             ->orwhere ('monto_pago','like','%'.$this->buscar.'%')
+            ->orwhere ('tipo_pago','like','%'.$this->buscar.'%')
             ->orwhere ('vendedor','like','%'.$this->buscar.'%')
             ->orwhere ('porcentaje','like','%'.$this->buscar.'%')
             ->orderBy($this->sort, $this->direccion)
-            ->paginate(10);
+            ->paginate(3);
 
 
-      //  return view('livewire.busqueda-agencias', compact('agencias') );
-        return view('livewire.busqueda-agencias', ['agencias' => $agencias] );
+        return view('livewire.busqueda-agencias', compact('agencias') );
+        // return view('livewire.busqueda-agencias', ['agencias' => $agencias] );
      }
 
      public function order( $sort)

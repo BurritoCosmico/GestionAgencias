@@ -27,9 +27,9 @@ return new class extends Migration
             $table->date('fecha_compra');
             $table->string("modalidad");
             $table->string("monto_pago");
+            $table->string("tipo_pago");
             $table->string("vendedor");
             $table->string("porcentaje");
-
             $table->timestamps();
         });
     }
@@ -42,7 +42,5 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('agencias');
-
-
     }
 };

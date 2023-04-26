@@ -26,13 +26,14 @@ class GestionAgencias extends Controller
              'fecha_compra' =>$request->fecha_compra,
              'modalidad' => $request->modalidad,
              'monto_pago' => $request->monto_pago,
+             'tipo_pago' => $request->tipo_pago,
              'vendedor' => $request->vendedor,
              'porcentaje' => $request->porcentaje,
             ]
           ]);
 
           //$this->emit
-         // return redirect()->route('dashboard');
-          return view('dashboard');
+          return redirect()->route('dashboard');
+         // return view('dashboard');
     }
 }

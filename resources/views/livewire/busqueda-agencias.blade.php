@@ -165,11 +165,8 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class=" items-center ">
-                                @livewire('ver-ficha', ['agencia'=>$agencia,key($agencia->id)])
+                                @livewire('ver-ficha', ['agencia'=> $agencia], key($agencia->id))
                             </div>
-
-
-
                         </td>
                     </tr>
                     @endforeach
@@ -192,8 +189,5 @@
 
 
 
-<script>
-    function toggleModal( ) { document.getElementById('modal').classList.toggle('hidden')
-    }
-</script>
+
 </div>
