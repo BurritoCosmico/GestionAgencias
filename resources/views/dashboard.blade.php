@@ -6,17 +6,7 @@
         </h2>
     </x-slot>
 
-    {{-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100 grid grid-cols-3">
-                    <div>
-                         <button class="bg-red-200">Save Changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+
     <div class="py-12" id="opciones">
         <div class="  max-w-7xl mx-auto sm:px-6 lg:px-8  dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg  grid grid-cols-3   text-center py-4">
            <div class="mt-4 mb-4 ml-4" >

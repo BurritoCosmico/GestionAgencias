@@ -31,7 +31,8 @@ class GestionAgencias extends Controller
             ]
           ]);
 
-          return redirect()->route('dashboard');
-        //  return view('dashboard');
+          //$this->emit
+         // return redirect()->route('dashboard');
+          return view('dashboard');
     }
 }

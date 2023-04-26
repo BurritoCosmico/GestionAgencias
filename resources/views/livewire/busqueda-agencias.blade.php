@@ -1,4 +1,7 @@
+
 <div >
+
+
     <div class="grid grid-cols-2 ">
         <div class=" px-6 mb-3">
             {{-- <form> --}}
@@ -13,12 +16,26 @@
             {{-- </form> --}}
         </div>
 
-        <div class=" px-6 mb-3 py-2">
-            <select id="filtro1" wire:model="select1"  name="filtro1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected value="ASC">ASC</option>
-                <option value="DESC">DESC</option>
-            </select>
-        </div>
+        <div class="grid grid-cols-2 ">
+            <div class=" px-6 mb-3 py-2">
+                <select id="filtro1"  name="filtro1" wire:model="buscar"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="">Todos los Agency</option>
+                    <option selected value="Maryel Cervantes">Maryel Cervantes</option>
+                    <option value="Fernanda Saldivar">Fernanda Saldivar</option>
+                </select>
+            </div>
+
+            <div class=" px-6 mb-3 py-2">
+                <select id="filtro2"  name="filtro2" wire:model="buscar"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="">Todas las Agencias</option>
+                    <option selected value="Emprendedor">Emprendedor</option>
+                    <option value="StartUp">StartUp</option>
+                    <option value="Completa">Completa</option>
+                </select>
+            </div>
+
+
+       </div>
     </div>
 
 
@@ -27,27 +44,92 @@
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('id')">
+                        <th scope="col" class=" px-6 py-3 cursor-pointer" wire:click="order('id')">
                             ID
+
+                            @if ( $sort == "id")
+                                 @if ( $direccion == "asc")
+                                    <i class="fas fa-sort-alpha-down"></i>
+                                 @else
+                                     <i class="fas fa-sort-alpha-up-alt"></i>
+                                 @endif
+                            @else
+                                <i class="fas fa-sort"></i>
+                            @endif
                         </th>
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('nombre_agencia')">
                             NOMBRE DE AGENCIA
+                            @if ( $sort == "nombre_agencia")
+                            @if ( $direccion == "asc")
+                               <i class="fas fa-sort-alpha-down"></i>
+                            @else
+                                <i class="fas fa-sort-alpha-up-alt"></i>
+                            @endif
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
                         </th>
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('nombre_cliente')">
                             REPRESENTANTE
+                            @if ( $sort == "nombre_cliente")
+                            @if ( $direccion == "asc")
+                               <i class="fas fa-sort-alpha-down"></i>
+                            @else
+                                <i class="fas fa-sort-alpha-up-alt"></i>
+                            @endif
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
                         </th>
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('tipo_agencia')">
                             TIPO DE AGENCIA
+                            @if ( $sort == "tipo_agencia")
+                            @if ( $direccion == "asc")
+                               <i class="fas fa-sort-alpha-down"></i>
+                            @else
+                                <i class="fas fa-sort-alpha-up-alt"></i>
+                            @endif
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
                         </th>
                         <th scope="col" class="px-4 py-3 cursor-pointer" wire:click="order('modalidad')">
                             MODALIDAD
+                            @if ( $sort == "modalidad")
+                            @if ( $direccion == "asc")
+                               <i class="fas fa-sort-alpha-down"></i>
+                            @else
+                                <i class="fas fa-sort-alpha-up-alt"></i>
+                            @endif
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
                         </th>
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('mail')">
                             MAIL
+                            @if ( $sort == "mail")
+                            @if ( $direccion == "asc")
+                               <i class="fas fa-sort-alpha-down"></i>
+                            @else
+                                <i class="fas fa-sort-alpha-up-alt"></i>
+                            @endif
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
                         </th>
-                        <th scope="col" class="px-4 py-3 cursor-pointer" wire:click="order('monto_pago')">
-                            MONTO PAGADO
+                        <th scope="col" class="px-4 py-3 cursor-pointer" wire:click="order('agency')">
+                            Agency Manager
+                            @if ( $sort == "agency")
+                            @if ( $direccion == "asc")
+                               <i class="fas fa-sort-alpha-down"></i>
+                            @else
+                                <i class="fas fa-sort-alpha-up-alt"></i>
+                            @endif
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
                         </th>
+
                         <th scope="col" class="px-5 py-3 cursor-pointer">
                             FICHA
                         </th>
@@ -79,11 +161,11 @@
                         </td>
 
                         <td class="px-4 py-4">
-                            {{$agencia->monto_pago}}
+                            {{$agencia->agency}}
                         </td>
                         <td class="px-6 py-4">
                             <div class=" items-center ">
-                                <button class="py-2 px-6 bg-blue-500 text-white rounded hover:bg-blue-700" onclick="toggleModal( '{{$agencia->id}}' )"> Ver ficha</button>
+                                @livewire('ver-ficha', ['agencia'=>$agencia,key($agencia->id)])
                             </div>
 
 
@@ -99,9 +181,12 @@
             </div>
         @endif
 
-        <div class="px-6 py-3">
-            {{-- {{$agencia->links}} --}}
-        </div>
+        @if ($agencias->hasPages())
+            <div class="px-6 py-3  text-white">
+                {{$agencias->links()}}
+            </div>
+        @endif
+
 
     </div>
 
@@ -111,3 +196,4 @@
     function toggleModal( ) { document.getElementById('modal').classList.toggle('hidden')
     }
 </script>
+</div>
